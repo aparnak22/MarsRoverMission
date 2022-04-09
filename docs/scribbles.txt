@@ -1,0 +1,12 @@
+on Receving an instruction
+	- Is it turn
+	- rover can always turn : Calculate turn based on current orientation + L or R 90deg
+	- Movement :  calculate movement by using the current location +/- 1 depending on  direction (N,S,E,W)
+		      check if destination is free 
+		      if so, move rover to new position
+	moveInstructions ->  Letter, type (turn,move)
+
+
+Check if position free :
+Calculate new Position
+check if any rovers on it?
