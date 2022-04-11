@@ -1,7 +1,9 @@
 package marsrovermission;
 
-import marsrovermission.util.Direction;
-import marsrovermission.util.SpinDirection;
+import marsrovermission.model.Direction;
+import marsrovermission.model.Position;
+import marsrovermission.model.SpinDirection;
+import marsrovermission.service.NavigationHelper;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

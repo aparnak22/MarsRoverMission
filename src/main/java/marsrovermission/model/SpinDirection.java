@@ -1,4 +1,4 @@
-package marsrovermission.util;
+package marsrovermission.model;
 
 public enum SpinDirection {
     L(90) , R(90);

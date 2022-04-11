@@ -1,7 +1,8 @@
-package marsrovermission;
+package marsrovermission.service;
 
-import marsrovermission.util.Direction;
-import marsrovermission.util.SpinDirection;
+import marsrovermission.model.Direction;
+import marsrovermission.model.Position;
+import marsrovermission.model.SpinDirection;
 
 public class NavigationHelper {
 

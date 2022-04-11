@@ -1,6 +1,8 @@
 package marsrovermission;
 
-import marsrovermission.util.Direction;
+import marsrovermission.model.Direction;
+import marsrovermission.model.Plateau;
+import marsrovermission.model.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

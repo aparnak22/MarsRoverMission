@@ -1,4 +1,6 @@
-package marsrovermission;
+package marsrovermission.model;
+
+import marsrovermission.model.Position;
 
 public class Plateau {
 

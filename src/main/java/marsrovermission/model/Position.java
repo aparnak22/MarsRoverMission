@@ -1,7 +1,6 @@
-package marsrovermission;
+package marsrovermission.model;
 
-import marsrovermission.util.Direction;
-import marsrovermission.util.SpinDirection;
+import marsrovermission.model.Direction;
 
 public class Position {
     private int x;
