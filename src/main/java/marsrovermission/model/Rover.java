@@ -17,11 +17,15 @@ public class Rover {
         return ID;
     }
 
+    public Position getPosition(){
+        return position;
+    }
+
     public void moveRover(Position position){
         this.position = position;
     }
 
-    private void spinRover(Direction orientation){
+    public void spinRover(Direction orientation){
         this.position.setOrientation(orientation);
     }
 }
