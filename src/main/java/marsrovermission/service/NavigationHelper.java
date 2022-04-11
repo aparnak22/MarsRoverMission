@@ -17,20 +17,22 @@ public class NavigationHelper {
     }
 
     public Position calculateNewPosition(Position roverPosition, int gridPoints){
-
+        int newX = roverPosition.getX();
+        int newY = roverPosition.getY();
+        Direction orientation = roverPosition.getOrientation();
         if (roverPosition.getOrientation() == Direction.N){
-            roverPosition.setX(roverPosition.getX() + gridPoints);
+            newY =  roverPosition.getY() + gridPoints;
         }
         else if (roverPosition.getOrientation() == Direction.E){
-            roverPosition.setY(roverPosition.getY() + gridPoints);
+            newX = roverPosition.getX() + gridPoints;
         }
         else if (roverPosition.getOrientation() == Direction.S){
-            roverPosition.setX(roverPosition.getX() - gridPoints);
+            newY = roverPosition.getY() - gridPoints;
         }
         else if (roverPosition.getOrientation() == Direction.W){
-            roverPosition.setY(roverPosition.getY() - gridPoints);
+            newX = roverPosition.getX() - gridPoints;
         }
-        return roverPosition;
+        return new Position(newX, newY, orientation);
     }
 
     public  Direction calculateNewSpinDirection(Position position, SpinDirection spinDirection){

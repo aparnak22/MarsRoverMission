@@ -16,8 +16,8 @@ public class TestNavigationHelperMove {
 
             Position newP = NavigationHelper.getInstance().calculateNewPosition(startP, 1);
 
-            assertEquals(2,newP.getX());
-            assertEquals(2,newP.getY());
+            assertEquals(1,newP.getX());
+            assertEquals(3,newP.getY());
    }
 
     @Test
@@ -27,8 +27,8 @@ public class TestNavigationHelperMove {
 
         Position newP = NavigationHelper.getInstance().calculateNewPosition(startP, 1);
 
-        assertEquals(0,newP.getX());
-        assertEquals(2,newP.getY());
+        assertEquals(1,newP.getX());
+        assertEquals(1,newP.getY());
     }
 
     @Test
@@ -38,8 +38,8 @@ public class TestNavigationHelperMove {
 
         Position newP = NavigationHelper.getInstance().calculateNewPosition(startP, 1);
 
-        assertEquals(1,newP.getX());
-        assertEquals(3,newP.getY());
+        assertEquals(2,newP.getX());
+        assertEquals(2,newP.getY());
     }
 
     @Test
@@ -49,8 +49,8 @@ public class TestNavigationHelperMove {
 
         Position newP = NavigationHelper.getInstance().calculateNewPosition(startP, 1);
 
-        assertEquals(1,newP.getX());
-        assertEquals(1,newP.getY());
+        assertEquals(0,newP.getX());
+        assertEquals(2,newP.getY());
     }
 
 
