@@ -5,8 +5,7 @@ import marsrovermission.app.MoveOutcome;
 import marsrovermission.model.Direction;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMissionControl {
 
@@ -66,5 +65,42 @@ public class TestMissionControl {
         assertEquals(5,result2.getEndPosition().getX());
         assertEquals(1,result2.getEndPosition().getY());
         assertEquals(Direction.E,result2.getEndPosition().getOrientation());
+    }
+
+    @Test
+    public void testMoveRoverInstructionOutOfBounds() {
+        //plateau size 10, 10
+        MissionControl mcontrol = new MissionControl(10, 10);
+        int roverID1 = mcontrol.createRover(9, 9, Direction.N);
+        MoveOutcome result = mcontrol.moveRover(roverID1, "MM");
+
+        assertFalse(result.isSuccess());
+        assertEquals(9,result.getEndPosition().getX());
+        assertEquals(10,result.getEndPosition().getY());
+        assertEquals(Direction.N,result.getEndPosition().getOrientation());
+        assertEquals(9,result.getFailedPosition().getX());
+        assertEquals(11,result.getFailedPosition().getY());
+        assertEquals("Position is outside of Plateau bounds.", result.getStatusMessage());
+
+    }
+
+    @Test
+    public void testMoveRoverCollision() {
+        //plateau size 10, 10
+        MissionControl mcontrol = new MissionControl(10, 10);
+        int roverID1 = mcontrol.createRover(5, 5, Direction.N);
+        MoveOutcome result1 = mcontrol.moveRover(roverID1, "MM");
+
+        int roverID2 = mcontrol.createRover(5, 5, Direction.N);
+        MoveOutcome result2 = mcontrol.moveRover(roverID2, "MM");
+
+        assertFalse(result2.isSuccess());
+        assertEquals(5,result2.getEndPosition().getX());
+        assertEquals(6,result2.getEndPosition().getY());
+        assertEquals(Direction.N,result2.getEndPosition().getOrientation());
+        assertEquals(5,result2.getFailedPosition().getX());
+        assertEquals(7,result2.getFailedPosition().getY());
+        assertEquals("Position is obstructed by the other Rover.", result2.getStatusMessage());
+
     }
 }
