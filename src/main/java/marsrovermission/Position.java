@@ -34,24 +34,9 @@ public class Position {
         return orientation;
     }
 
-    public Direction spin(SpinDirection spinDirection){
-        Direction newOrientation;
-        int newOrientationDeg;
-        if ( spinDirection == SpinDirection.L) {
-            newOrientationDeg = orientation.getDegrees() - 90;
-        }
-        else {
-            newOrientationDeg = orientation.getDegrees() + 90;
-        }
-        if ( newOrientationDeg >= 360 ) {
-            newOrientationDeg = newOrientationDeg - 360;
-        }
-        else if (newOrientationDeg < 0 ){
-            newOrientationDeg = newOrientationDeg + 360;
-        }
-        newOrientation = Direction.getDirection(newOrientationDeg);
-        orientation = newOrientation;
-        return newOrientation;
+    public void setOrientation( Direction orientation) {
+        this.orientation = orientation;
     }
+
 
 }

@@ -1,6 +1,7 @@
 package marsrovermission;
 
 import marsrovermission.util.Direction;
+import marsrovermission.util.SpinDirection;
 
 public class NavigationHelper {
 
@@ -29,5 +30,24 @@ public class NavigationHelper {
             roverPosition.setY(roverPosition.getY() - gridPoints);
         }
         return roverPosition;
+    }
+
+    public  Direction calculateNewSpinDirection(Position position, SpinDirection spinDirection){
+        Direction newOrientation;
+        int newOrientationDeg;
+        if ( spinDirection == SpinDirection.L) {
+            newOrientationDeg = position.getOrientation().getDegrees() - 90;
+        }
+        else {
+            newOrientationDeg = position.getOrientation().getDegrees() + 90;
+        }
+        if ( newOrientationDeg >= 360 ) {
+            newOrientationDeg = newOrientationDeg - 360;
+        }
+        else if (newOrientationDeg < 0 ){
+            newOrientationDeg = newOrientationDeg + 360;
+        }
+        newOrientation = Direction.getDirection(newOrientationDeg);
+        return newOrientation;
     }
 }
