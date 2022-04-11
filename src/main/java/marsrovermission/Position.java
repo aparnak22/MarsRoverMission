@@ -1,5 +1,8 @@
 package marsrovermission;
 
+import marsrovermission.util.Direction;
+import marsrovermission.util.SpinDirection;
+
 public class Position {
     private int x;
     private int y;

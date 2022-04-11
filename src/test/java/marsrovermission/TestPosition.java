@@ -1,5 +1,7 @@
 package marsrovermission;
 
+import marsrovermission.util.Direction;
+import marsrovermission.util.SpinDirection;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,7 +10,7 @@ public class TestPosition {
 
     @Test
     public void testSpinRightFromNorth(){
-        Position pos = new Position(1,1,Direction.N);
+        Position pos = new Position(1,1, Direction.N);
         pos.spin(SpinDirection.R);
 
         assertEquals(Direction.E, pos.getOrientation());
