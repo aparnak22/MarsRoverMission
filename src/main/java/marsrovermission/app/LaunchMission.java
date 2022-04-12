@@ -44,13 +44,13 @@ public class LaunchMission {
                     System.out.println("Invalid rover start coordinates. Please try again.");
                 }
             }
-                //Get Rover instructions
-                String roverInstructions = getRoverInstructionsFor( i+1, scanner);
-
-                roverIds[i] = missionControl.createRover(roverStartPos.getX(),
+            roverIds[i] = missionControl.createRover(roverStartPos.getX(),
                                             roverStartPos.getX(),
                                                 roverStartPos.getOrientation());
-                MoveOutcome result = missionControl.moveRover(roverIds[i], roverInstructions);
+            //Get Rover instructions
+            String roverInstructions = getRoverInstructionsFor( i+1, scanner);
+
+            MoveOutcome result = missionControl.moveRover(roverIds[i], roverInstructions);
 
                 if ( result.isSuccess())
                  System.out.println(result.getEndPosition().toString());
@@ -65,12 +65,12 @@ public class LaunchMission {
           boolean repeatMove = true;
           while (repeatMove) {
               System.out.println("Continue moving the rovers (Y/N) ? ");
-              String continueMove = scanner.next();
+              String continueMove = scanner.nextLine();
               if ( continueMove.trim().equalsIgnoreCase("Y")){
 
                   System.out.println("Which rover would you like to move (1/2) ? ");
 
-                  String roverNumStr = scanner.next();
+                  String roverNumStr = scanner.nextLine();
 
                   int roverNumInt = Integer.parseInt(roverNumStr.trim());
                   //Get Rover instructions
