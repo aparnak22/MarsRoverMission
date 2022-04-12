@@ -37,5 +37,7 @@ public class Position {
         this.orientation = orientation;
     }
 
-
+    public String toString(){
+        return x + " " + y + " " +orientation.name();
+    }
 }
