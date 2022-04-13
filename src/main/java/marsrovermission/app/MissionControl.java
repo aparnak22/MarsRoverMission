@@ -18,9 +18,12 @@ public class MissionControl {
     }
 
     public int createRover(int startX, int startY, Direction orientation){
-        Rover rover = new Rover(roverIdCounter++,new Position(startX, startY, orientation));
-        roverList.add(rover);
-        return rover.getID();
+        if (plateau.isPositionInside(new Position(startX,startY,orientation))) {
+            Rover rover = new Rover(roverIdCounter++, new Position(startX, startY, orientation));
+            roverList.add(rover);
+            return rover.getID();
+        }
+        else return -1;
     }
 
     public MoveOutcome moveRover(int roverID, String moveInstructions){

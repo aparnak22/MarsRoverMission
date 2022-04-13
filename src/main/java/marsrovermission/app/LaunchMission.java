@@ -11,7 +11,7 @@ public class LaunchMission {
     public static void main(String... args){
 
         System.out.println("Welcome to Mission Mars ! This is your chance to move a rover on the surface of Mars. ");
-        System.out.println("You have the conn ! ");
+        System.out.println("You have the con ! ");
 
         //Get Plateau dimensions
         Scanner scanner = new Scanner(System.in);
@@ -35,18 +35,28 @@ public class LaunchMission {
         for (int i = 0; i < 2; i++) {
 
             Position roverStartPos = null;
-            while (roverStartPos == null) {
+            int createRoverOut = -1;
+
+            while ( (roverStartPos == null) || createRoverOut == -1 ) {
                 //Get Rover1 coordinates
                 String roverString = getRoverStartPosition(i + 1, scanner);
                 if (MissionControlInputHelper.validateRoverCoordinates(roverString)) {
                     roverStartPos = MissionControlInputHelper.getRoverCoordinatesAsPositon(roverString);
+
+                    createRoverOut = missionControl.createRover(roverStartPos.getX(),
+                            roverStartPos.getX(),
+                            roverStartPos.getOrientation());
+                    if (createRoverOut == -1) {
+                        System.out.println("Rover is outside the plateau. Please try again. ");
+                    }
+                    else roverIds[i] = createRoverOut;
+
                 } else {
                     System.out.println("Invalid rover start coordinates. Please try again.");
                 }
+
             }
-            roverIds[i] = missionControl.createRover(roverStartPos.getX(),
-                                            roverStartPos.getX(),
-                                                roverStartPos.getOrientation());
+
             //Get Rover instructions
             String roverInstructions = getRoverInstructionsFor( i+1, scanner);
 
