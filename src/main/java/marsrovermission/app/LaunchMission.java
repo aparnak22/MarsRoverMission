@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 public class LaunchMission {
 
+    public static final String INVALID_PLATEAU_SIZE = "Invalid plateau size. Please try again.";
+    public static final String ROVER_IS_OUTSIDE_THE_PLATEAU = "Rover is outside the plateau. Please try again. ";
+
     public static void main(String... args){
 
         System.out.println("Welcome to Mission Mars ! This is your chance to move a rover on the surface of Mars. ");
@@ -24,7 +27,7 @@ public class LaunchMission {
                 plateauSize = MissionControlInputHelper.getPlateuSizeAsInt(plateauSizeString);
             }
             else {
-                System.out.println("Invalid plateau size. Please try again.");
+                System.out.println(INVALID_PLATEAU_SIZE);
             }
         }
 
@@ -47,7 +50,7 @@ public class LaunchMission {
                             roverStartPos.getX(),
                             roverStartPos.getOrientation());
                     if (createRoverOut == -1) {
-                        System.out.println("Rover is outside the plateau. Please try again. ");
+                        System.out.println(ROVER_IS_OUTSIDE_THE_PLATEAU);
                     }
                     else roverIds[i] = createRoverOut;
 
@@ -63,7 +66,7 @@ public class LaunchMission {
             MoveOutcome result = missionControl.moveRover(roverIds[i], roverInstructions);
 
                 if ( result.isSuccess())
-                 System.out.println(result.getEndPosition().toString());
+                 System.out.println("Rover " + (i +1 ) + " is at " +  result.getEndPosition().toString());
                 else {
                     System.out.println(result.getStatusMessage() + " " + result.getFailedPosition());
                     System.out.println("Rover has stopped at " + result.getEndPosition().toString());
@@ -88,7 +91,7 @@ public class LaunchMission {
                   MoveOutcome result = missionControl.moveRover(roverIds[roverNumInt-1], roverInstructions);
 
                   if ( result.isSuccess())
-                      System.out.println(result.getEndPosition().toString());
+                      System.out.println("Rover " + roverNumInt  + " at " + result.getEndPosition().toString());
                   else {
                       System.out.println(result.getStatusMessage() + " " + result.getFailedPosition());
                       System.out.println("Rover has stopped at " + result.getEndPosition().toString());

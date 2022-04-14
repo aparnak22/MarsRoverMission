@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MissionControl {
+    public static final String OUTSIDE_OF_PLATEAU_BOUNDS = "Position is outside of Plateau bounds.";
+    public static final String OBSTRUCTED_BY_ANOTHER_ROVER = "Position is obstructed by another Rover.";
     private final Plateau plateau;
     private final List<Rover> roverList;
     private int roverIdCounter = 0;
     private final static int MOVEMENT_GRID_POINTS = 1;
+
+
 
     public MissionControl(int gridSizeX,int gridSizeY) {
         plateau = new Plateau(gridSizeX, gridSizeY);
@@ -37,11 +41,11 @@ public class MissionControl {
 
                 if (!plateau.isPositionInside(pos) ) {
                     return new MoveOutcome(false, rover.getPosition(), pos,
-                            "Position is outside of Plateau bounds.");
+                            OUTSIDE_OF_PLATEAU_BOUNDS);
                 }
                 if ( isObstructedForRover(roverID,pos)){
                     return new MoveOutcome(false,rover.getPosition(), pos,
-                            "Position is obstructed by the other Rover.");
+                            OBSTRUCTED_BY_ANOTHER_ROVER);
                 }
                rover.moveRover(pos);
             }
@@ -51,9 +55,6 @@ public class MissionControl {
                                             rover.getPosition(),spinDirection);
                 rover.spinRover(orientation);
             }
-          /*  System.out.println("Rover "  +roverID + " " + rover.getPosition().getX() + " ,"+
-                    rover.getPosition().getY() + " " + rover.getPosition().getOrientation());
-                    */
 
         }
         return new MoveOutcome(true,rover.getPosition());
@@ -71,5 +72,6 @@ public class MissionControl {
         }
         return false;
     }
+
 
 }
