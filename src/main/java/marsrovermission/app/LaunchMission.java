@@ -1,8 +1,6 @@
 package marsrovermission.app;
 
-import marsrovermission.model.Direction;
 import marsrovermission.model.Position;
-import marsrovermission.model.Rover;
 
 import java.util.Scanner;
 
@@ -31,7 +29,7 @@ public class LaunchMission {
             }
         }
 
-        MissionControl missionControl = new MissionControl(plateauSize[0],plateauSize[1]);
+        MissionControl missionControl =  MissionControl.createMissionControlInstance(plateauSize[0],plateauSize[1]);
 
         int[] roverIds = new int[2];
 
@@ -88,7 +86,7 @@ public class LaunchMission {
                   int roverNumInt = Integer.parseInt(roverNumStr.trim());
                   //Get Rover instructions
                   String roverInstructions = getRoverInstructionsFor( roverNumInt, scanner);
-                  MoveOutcome result = missionControl.moveRover(roverIds[roverNumInt-1], roverInstructions);
+                  MoveOutcome result =  missionControl.moveRover(roverIds[roverNumInt-1], roverInstructions);
 
                   if ( result.isSuccess())
                       System.out.println("Rover " + roverNumInt  + " at " + result.getEndPosition().toString());
@@ -100,22 +98,10 @@ public class LaunchMission {
               else repeatMove = false;
 
           }
-        // Enter rover 1 instructions
-        //Enter rover 2 instructions
+
 
     }
 
-    private static int[] getCoordinates(String input){
-        String[] inputs = input.split(" ");
-        int[] intArr = new int[2];
-        intArr[0] = Integer.parseInt(inputs[0]);
-        intArr[1] = Integer.parseInt(inputs[1]);
-        return intArr;
-    }
-    
-    public void displayMsg(String message) {
-        System.out.println(message);
-    }
 
     
     public static String getPlateauSize(Scanner scanner) {

@@ -20,28 +20,22 @@ public class NavigationHelper {
         int newX = roverPosition.getX();
         int newY = roverPosition.getY();
         Direction orientation = roverPosition.getOrientation();
-        if (roverPosition.getOrientation() == Direction.N){
-            newY =  roverPosition.getY() + gridPoints;
-        }
-        else if (roverPosition.getOrientation() == Direction.E){
-            newX = roverPosition.getX() + gridPoints;
-        }
-        else if (roverPosition.getOrientation() == Direction.S){
-            newY = roverPosition.getY() - gridPoints;
-        }
-        else if (roverPosition.getOrientation() == Direction.W){
-            newX = roverPosition.getX() - gridPoints;
-        }
+
+        if (roverPosition.getOrientation() == Direction.N)  newY =  roverPosition.getY() + gridPoints;
+        else if (roverPosition.getOrientation() == Direction.E) newX = roverPosition.getX() + gridPoints;
+        else if (roverPosition.getOrientation() == Direction.S) newY = roverPosition.getY() - gridPoints;
+        else if (roverPosition.getOrientation() == Direction.W) newX = roverPosition.getX() - gridPoints;
+
         return new Position(newX, newY, orientation);
     }
 
-    public  Direction calculateNewSpinDirection(Position position, SpinDirection spinDirection){
+    public  Direction calculateNewSpinDirection(Position position, SpinDirection spinDirection) {
         Direction newOrientation;
         int newOrientationDeg;
+
         if ( spinDirection == SpinDirection.L) {
             newOrientationDeg = position.getOrientation().getDegrees() - 90;
-        }
-        else {
+        } else {
             newOrientationDeg = position.getOrientation().getDegrees() + 90;
         }
         if ( newOrientationDeg >= 360 ) {

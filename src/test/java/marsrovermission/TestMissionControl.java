@@ -12,7 +12,7 @@ public class TestMissionControl {
     @Test
     public void testCreateRover(){
         //plateau size 10, 10
-        MissionControl mcontrol = new MissionControl(10,10);
+        MissionControl mcontrol =  MissionControl.createMissionControlInstance(10,10);
         int roverID1 = mcontrol.createRover(2,2, Direction.N);
         int roverID2 = mcontrol.createRover(1,2, Direction.E);
 
@@ -23,7 +23,7 @@ public class TestMissionControl {
     @Test
     public void testMoveRoverWithOneInstruction() {
         //plateau size 10, 10
-        MissionControl mcontrol = new MissionControl(10, 10);
+        MissionControl mcontrol =  MissionControl.createMissionControlInstance(10, 10);
         int roverID1 = mcontrol.createRover(2, 2, Direction.N);
         MoveOutcome result = mcontrol.moveRover(roverID1, "M");
 
@@ -36,7 +36,7 @@ public class TestMissionControl {
     @Test
     public void testMoveRoverWithFiveInstructions(){
         //plateau size 10, 10
-        MissionControl mcontrol = new MissionControl(10, 10);
+        MissionControl mcontrol =  MissionControl.createMissionControlInstance(10, 10);
         int roverID1 = mcontrol.createRover(2, 2, Direction.N);
         MoveOutcome result = mcontrol.moveRover(roverID1, "MLMLM");
 
@@ -49,7 +49,7 @@ public class TestMissionControl {
     @Test
     public void testMoveRoverBriefSampleTest(){
         //plateau size 5, 5
-        MissionControl mcontrol = new MissionControl(5,5);
+        MissionControl mcontrol =  MissionControl.createMissionControlInstance(5,5);
         int roverID1 = mcontrol.createRover(1, 2, Direction.N);
         MoveOutcome result1 = mcontrol.moveRover(roverID1, "LMLMLMLMM");
 
@@ -70,7 +70,7 @@ public class TestMissionControl {
     @Test
     public void testMoveRoverInstructionOutOfBounds() {
         //plateau size 10, 10
-        MissionControl mcontrol = new MissionControl(10, 10);
+        MissionControl mcontrol =  MissionControl.createMissionControlInstance(10, 10);
         int roverID1 = mcontrol.createRover(9, 9, Direction.N);
         MoveOutcome result = mcontrol.moveRover(roverID1, "MM");
 
@@ -87,7 +87,7 @@ public class TestMissionControl {
     @Test
     public void testMoveRoverCollision() {
         //plateau size 10, 10
-        MissionControl mcontrol = new MissionControl(10, 10);
+        MissionControl mcontrol =  MissionControl.createMissionControlInstance(10, 10);
         int roverID1 = mcontrol.createRover(5, 5, Direction.N);
         MoveOutcome result1 = mcontrol.moveRover(roverID1, "MM");
 
@@ -100,7 +100,7 @@ public class TestMissionControl {
         assertEquals(Direction.N,result2.getEndPosition().getOrientation());
         assertEquals(5,result2.getFailedPosition().getX());
         assertEquals(7,result2.getFailedPosition().getY());
-        assertEquals("Position is obstructed by the other Rover.", result2.getStatusMessage());
+        assertEquals("Position is obstructed by another Rover.", result2.getStatusMessage());
 
     }
 }
