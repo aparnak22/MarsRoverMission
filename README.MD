@@ -28,9 +28,11 @@ Each rover has a rover ID.
 The plateau can be of any Integer size.
 The rovers cannot be placed outside of the plateau.
 Any attempt to move rover to a position already occupied by another rover or outside the plateau is stopped and 
-the current position displayed. The position that is occuplied by another rover is also displayed.
+the current position displayed. The position that is occupied by another rover is also displayed.
 
+## Scope for further enhancements
 
+Allow any number of rovers to be created and managed around the plateau.  
 
 
 

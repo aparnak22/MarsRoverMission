@@ -1,7 +1,6 @@
 package marsrovermission.model;
 
 import marsrovermission.app.MoveOutcome;
-import marsrovermission.model.Position;
 import marsrovermission.service.NavigationHelper;
 
 import java.util.ArrayList;

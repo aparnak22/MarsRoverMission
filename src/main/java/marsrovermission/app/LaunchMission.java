@@ -29,8 +29,8 @@ public class LaunchMission {
             }
         }
 
-        MissionControl missionControl =  MissionControl.createMissionControlInstance(plateauSize[0],plateauSize[1]);
-
+        MissionControl missionControl =  MissionControl.createMissionControlInstance(
+                                        plateauSize[0],plateauSize[1]);
         int[] roverIds = new int[2];
 
         for (int i = 0; i < 2; i++) {
@@ -70,7 +70,6 @@ public class LaunchMission {
                     System.out.println("Rover has stopped at " + result.getEndPosition().toString());
                 }
 
-
         }
           //Ask to continue
           boolean repeatMove = true;
@@ -98,25 +97,19 @@ public class LaunchMission {
               else repeatMove = false;
 
           }
-
-
     }
-
-
     
     public static String getPlateauSize(Scanner scanner) {
         System.out.println("Plateau size as the maximum x and y co-ordinates in the format  X Y . ");
         return scanner.nextLine();
     }
 
-    
     public static String getRoverStartPosition(int no, Scanner scanner) {
         System.out.println("Rover " + no + "'s start position as X and Y coordinates and a orientation " +
                 "in the format X Y N/E/S/W . ");
         return scanner.nextLine();
     }
 
-    
     public static String getRoverInstructionsFor(int no,Scanner scanner) {
         System.out.println("Instructions for rover no " + no );
         return scanner.nextLine();
