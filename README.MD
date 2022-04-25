@@ -17,18 +17,25 @@ The program takes as an input the following:
 It then displays the position of the rover following the move and the accepts the 
 position of the second rover followed by instructions to move the rover, 
  
+## Solution
+
+This is a console app which accepts inputs as above. 
+The main method is in **marsrovermission.app.LaunchMission**. 
+Run the class and enter the inputs when prompted.
+
+## Features
+
+1. Each rover has a rover ID.
+2. The plateau can be of any Integer size.
+3. The rovers cannot be placed outside of the plateau.
+4. Any attempt to move rover to a position already occupied by another rover or outside the plateau is stopped and
+5. the current position displayed. The position that is occupied by another rover is also displayed.
+
 ## Extension
 
 After the above inputs the user has an option to continue with the program. They can then choose a rover
 to move and provide instructions. The program exits when the user does not wish to continue.
 
-## Features
-
-Each rover has a rover ID.
-The plateau can be of any Integer size.
-The rovers cannot be placed outside of the plateau.
-Any attempt to move rover to a position already occupied by another rover or outside the plateau is stopped and 
-the current position displayed. The position that is occupied by another rover is also displayed.
 
 ## Scope for further enhancements
 
